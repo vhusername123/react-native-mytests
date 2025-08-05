@@ -2,12 +2,13 @@ import { StyleSheet, Text, View, Image, useColorScheme } from "react-native";
 import { Link } from "expo-router";
 import img from "../assets/img/tomato.jpg";
 import { Colors } from "../constants/Colors";
+import ThemedView from "../components/ThemedView";
 const Home = () => {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme] ?? Colors.light;
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <ThemedView style={styles.container}>
       <Text style={[styles.title, { color: theme.text }]}>
         Hojkjkljme ahsajdlkjasd
       </Text>
@@ -19,7 +20,7 @@ const Home = () => {
       <Link href="/contact" style={[styles.link, { color: theme.text }]}>
         Contact
       </Link>
-    </View>
+    </ThemedView>
   );
 };
 
