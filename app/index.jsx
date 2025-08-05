@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Link } from "expo-router";
-import img from "../assets/img/";
+import img from "../assets/img/tomato.jpg";
 const Home = () => {
   return (
     <View style={styles.container}>
@@ -31,6 +31,8 @@ const styles = StyleSheet.create({
   },
   image: {
     marginVertical: 20,
+    maxHeight: "20%",
+    maxWidth: "20%",
   },
   link: {
     marginVertical: 10,
