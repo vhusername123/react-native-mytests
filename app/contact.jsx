@@ -1,18 +1,13 @@
-import { Link } from "expo-router";
-import { StyleSheet, Text, useColorScheme, View } from "react-native";
-import { Colors } from "../constants/Colors";
+import { StyleSheet } from "react-native";
 import ThemedView from "../components/ThemedView";
+import ThemedText from "../components/ThemedText";
 
 const Contact = () => {
-  const colorScheme = useColorScheme();
-  const theme = Colors[colorScheme] ?? Colors.light;
-
   return (
     <ThemedView style={styles.container}>
-      <Text style={{ color: theme.text }}>Contact</Text>
-      <Link href="/" style={[styles.link, { color: theme.text }]}>
-        Back Home
-      </Link>
+      <ThemedText title={true} style={styles.title}>
+        Contact
+      </ThemedText>
     </ThemedView>
   );
 };
@@ -24,6 +19,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  title: {
+    fontVariant: "bold",
+    fontSize: 18,
   },
   link: {
     marginVertical: 10,

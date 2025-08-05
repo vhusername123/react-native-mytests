@@ -1,24 +1,29 @@
-import { StyleSheet, Text, View, Image, useColorScheme } from "react-native";
+import { StyleSheet, useColorScheme } from "react-native";
 import { Link } from "expo-router";
-import img from "../assets/img/tomato.jpg";
 import { Colors } from "../constants/Colors";
 import ThemedView from "../components/ThemedView";
+import ThemedLogo from "../components/ThemedLogo";
+import Spacer from "../components/Spacer";
+import ThemedText from "../components/ThemedText";
 const Home = () => {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme] ?? Colors.light;
 
   return (
     <ThemedView style={styles.container}>
-      <Text style={[styles.title, { color: theme.text }]}>
-        Hojkjkljme ahsajdlkjasd
-      </Text>
-      <Image source={img} style={styles.image} />
-      <Text style={{ color: theme.text }}>Bottom Text</Text>
+      <ThemedText>Cool Stuff</ThemedText>
+      <ThemedLogo />
+      <ThemedText title={true} style={styles.title}>
+        The Number 1
+      </ThemedText>
+      <ThemedText>Reading List App</ThemedText>
+      <Spacer />
       <Link href="/about" style={[styles.link, { color: theme.text }]}>
-        About
+        <ThemedText>About</ThemedText>
       </Link>
+      <Spacer height={10} />
       <Link href="/contact" style={[styles.link, { color: theme.text }]}>
-        Contact
+        <ThemedText> Contact </ThemedText>
       </Link>
     </ThemedView>
   );
@@ -36,13 +41,7 @@ const styles = StyleSheet.create({
     fontVariant: "bold",
     fontSize: 18,
   },
-  image: {
-    marginVertical: 20,
-    maxHeight: "20%",
-    maxWidth: "20%",
-  },
   link: {
-    marginVertical: 10,
     borderBottomWidth: 1,
   },
 });
