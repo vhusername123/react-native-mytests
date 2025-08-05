@@ -1,16 +1,22 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, useColorScheme } from "react-native";
 import { Link } from "expo-router";
 import img from "../assets/img/tomato.jpg";
+import { Colors } from "../constants/Colors";
 const Home = () => {
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme] ?? Colors.light;
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Hojkjkljme ahsajdlkjasd</Text>
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
+      <Text style={[styles.title, { color: theme.text }]}>
+        Hojkjkljme ahsajdlkjasd
+      </Text>
       <Image source={img} style={styles.image} />
-      <Text>Bottom Text</Text>
-      <Link href="/about" style={styles.link}>
+      <Text style={{ color: theme.text }}>Bottom Text</Text>
+      <Link href="/about" style={[styles.link, { color: theme.text }]}>
         About
       </Link>
-      <Link href="/contact" style={styles.link}>
+      <Link href="/contact" style={[styles.link, { color: theme.text }]}>
         Contact
       </Link>
     </View>
