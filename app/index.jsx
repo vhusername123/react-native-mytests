@@ -33,6 +33,10 @@ const Home = () => {
       <Link href="/contact" style={styles.link}>
         <ThemedText> Contact </ThemedText>
       </Link>
+      <Spacer height={10} />
+      <Link href="/create" style={styles.link}>
+        <ThemedText> test </ThemedText>
+      </Link>
     </ThemedView>
   );
 };
