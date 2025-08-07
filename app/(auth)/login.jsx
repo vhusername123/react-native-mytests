@@ -17,9 +17,11 @@ import { useUser } from "../../hooks/useUser";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user } = useUser();
-  const handleSubmit = () => {
-    console.log("current user:", user);
+  const { login } = useUser();
+  const handleSubmit = async () => {
+    try {
+      await login(email, password);
+    } catch (error) {}
     console.log("pressed", email, password);
   };
   return (
