@@ -10,6 +10,7 @@ export function UserProvider({ children }) {
       await account.createEmailPasswordSession(email, password);
       const response = await account.get();
       setUser(response);
+      console.log(user);
     } catch (error) {
       throw Error(error.message);
     }
@@ -22,7 +23,13 @@ export function UserProvider({ children }) {
       throw Error(error.message);
     }
   }
-  async function logout() {}
+  async function logout() {
+    if (user === null) {
+      throw Error("No user logged in");
+    }
+    await account.deleteSession("current");
+    setUser(null);
+  }
   return (
     <UserContext.Provider value={{ user, login, register, logout }}>
       {children}
