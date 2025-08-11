@@ -26,7 +26,6 @@ const Login = () => {
     } catch (error) {
       setError(error.message);
     }
-    console.log("pressed", email, password);
   };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
