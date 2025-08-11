@@ -2,6 +2,7 @@ import { useRouter } from "expo-router";
 import { useUser } from "../../hooks/useUser";
 import { useEffect } from "react";
 import { Text } from "react-native";
+import ThemedLoadingPage from "../ThemedLoadingPage";
 
 const GuestOnly = ({ children }) => {
   const { user, authChecked } = useUser();
@@ -12,7 +13,7 @@ const GuestOnly = ({ children }) => {
     }
   }, [user, authChecked]);
   if (!authChecked) {
-    return <Text>Loading</Text>;
+    return <ThemedLoadingPage />;
   }
   return children;
 };
