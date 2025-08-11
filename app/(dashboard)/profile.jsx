@@ -11,7 +11,7 @@ const Profile = () => {
   const [error, setError] = useState("");
   const { logout, user } = useUser();
   if (user === null) {
-    return;
+    throw Error("user can't be null here");
   }
   async function logoutattempt() {
     setError(null);
