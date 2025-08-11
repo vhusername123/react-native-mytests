@@ -1,0 +1,6 @@
+{
+    idmap:{
+        "databasename": "databaseid"
+    }
+    "databaseid":{"tablenames": "tableids"}
+}
