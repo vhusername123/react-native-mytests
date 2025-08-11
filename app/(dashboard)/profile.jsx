@@ -9,7 +9,10 @@ import { Colors } from "../../constants/Colors";
 
 const Profile = () => {
   const [error, setError] = useState("");
-  const { logout } = useUser();
+  const { logout, user } = useUser();
+  if (user === null) {
+    return;
+  }
   async function logoutattempt() {
     setError(null);
     try {
@@ -21,7 +24,7 @@ const Profile = () => {
   return (
     <ThemedView style={styles.container}>
       <ThemedText title={true} style={styles.heading}>
-        Your Email
+        {user.email}
       </ThemedText>
       <Spacer />
       <ThemedText>Time to start reading some books...</ThemedText>
