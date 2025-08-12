@@ -6,10 +6,12 @@ import { useUser } from "../../hooks/useUser";
 import ThemedButton from "../../components/ThemedButton";
 import { useState } from "react";
 import { Colors } from "../../constants/Colors";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const Profile = () => {
   const [error, setError] = useState("");
   const { logout, user } = useUser();
+  const { setLanguage } = useLanguage();
   if (user === null) {
     throw Error("user can't be null here");
   }
@@ -21,6 +23,9 @@ const Profile = () => {
       setError(error.message);
     }
   }
+  function changeLang(lang) {
+    setLanguage(lang);
+  }
   return (
     <ThemedView style={styles.container}>
       <ThemedText title={true} style={styles.heading}>
@@ -31,6 +36,12 @@ const Profile = () => {
       <Spacer />
       <ThemedButton onPress={logoutattempt}>
         <Text style={{ color: "#f2f2f2" }}>logout</Text>
+      </ThemedButton>
+      <ThemedButton onPress={() => changeLang("en")}>
+        <Text style={{ color: "#f2f2f2" }}>English</Text>
+      </ThemedButton>
+      <ThemedButton onPress={() => changeLang("de")}>
+        <Text style={{ color: "#f2f2f2" }}>German</Text>
       </ThemedButton>
       <Spacer />
       {(error && <Text style={styles.error}>{error}</Text>) || <Spacer />}
