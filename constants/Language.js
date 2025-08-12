@@ -45,7 +45,7 @@ export const Language = {
     Contact: "Kontakte",
     About: "Über",
     "Cool Stuff": "Cooles Zeug",
-    "The Number 1": "The Nummer 1",
+    "The Number 1": "Die Nummer 1",
     "Reading List App": "Bücherlisten App",
     English: "Englisch",
     German: "Deutsch",
