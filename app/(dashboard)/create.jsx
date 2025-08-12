@@ -60,9 +60,9 @@ const Create = () => {
         />
         <Spacer />
         <ThemedButton onPress={handleSubmit} disabled={loading}>
-          <Text style={{ color: "#fff" }}>
+          <ThemedText console={true} style={{ color: "#fff" }}>
             {loading ? "Saving..." : "Create Book"}
-          </Text>
+          </ThemedText>
         </ThemedButton>
       </ThemedView>
     </TouchableWithoutFeedback>

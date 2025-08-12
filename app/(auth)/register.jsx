@@ -50,7 +50,7 @@ const Register = () => {
           secureTextEntry
         />
         <ThemedButton onPress={handleSubmit}>
-          <Text style={{ color: "#f2f2f2" }}>Register</Text>
+          <ThemedText style={{ color: "#f2f2f2" }}>Register</ThemedText>
         </ThemedButton>
         <Spacer height={10} />
         {(error && <Text style={styles.error}>{error}</Text>) || <Spacer />}

@@ -3,11 +3,14 @@ import { useColorScheme } from "react-native";
 import { Colors } from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import UserOnly from "../../components/auth/UserOnly";
+import { useLanguage } from "../../hooks/useLanguage";
+import { Language } from "../../constants/Language";
 
 const DashboardLayout = () => {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme] ?? Colors.light;
-
+  const { userLang } = useLanguage();
+  const texts = Language[userLang];
   return (
     <UserOnly>
       <Tabs
@@ -20,11 +23,12 @@ const DashboardLayout = () => {
           },
           tabBarActiveTintColor: theme.iconColorFocused,
           tabBarInactiveTintColor: theme.iconColor,
-        }}>
+        }}
+      >
         <Tabs.Screen
           name="profile"
           options={{
-            title: "Profile",
+            title: texts["Profile"],
             tabBarIcon: ({ focused }) => (
               <Ionicons
                 size={24}
@@ -37,7 +41,7 @@ const DashboardLayout = () => {
         <Tabs.Screen
           name="create"
           options={{
-            title: "Create",
+            title: texts["Create"],
             tabBarIcon: ({ focused }) => (
               <Ionicons
                 size={24}
@@ -50,7 +54,7 @@ const DashboardLayout = () => {
         <Tabs.Screen
           name="books"
           options={{
-            title: "Books",
+            title: texts["Books"],
             tabBarIcon: ({ focused }) => (
               <Ionicons
                 size={24}

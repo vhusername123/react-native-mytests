@@ -31,7 +31,7 @@ const Home = () => {
       </Link>
       <Spacer height={10} />
       <Link href="/contact" style={styles.link}>
-        <ThemedText> Contact </ThemedText>
+        <ThemedText>Contact</ThemedText>
       </Link>
       <Spacer height={10} />
       <Link href="/create" style={styles.link}>
