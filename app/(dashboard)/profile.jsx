@@ -7,11 +7,12 @@ import ThemedButton from "../../components/ThemedButton";
 import { useState } from "react";
 import { Colors } from "../../constants/Colors";
 import { useLanguage } from "../../hooks/useLanguage";
+import { Picker } from "@react-native-picker/picker";
 
 const Profile = () => {
   const [error, setError] = useState("");
   const { logout, user } = useUser();
-  const { setLanguage } = useLanguage();
+  const { setLanguage, langList } = useLanguage();
   if (user === null) {
     throw Error("user can't be null here");
   }
@@ -35,14 +36,16 @@ const Profile = () => {
       <ThemedText>Time to start reading some books...</ThemedText>
       <Spacer />
       <ThemedButton onPress={logoutattempt}>
-        <Text style={{ color: "#f2f2f2" }}>logout</Text>
+        <ThemedText style={{ color: "#f2f2f2" }}>logout</ThemedText>
       </ThemedButton>
-      <ThemedButton onPress={() => changeLang("en")}>
-        <Text style={{ color: "#f2f2f2" }}>English</Text>
-      </ThemedButton>
-      <ThemedButton onPress={() => changeLang("de")}>
-        <Text style={{ color: "#f2f2f2" }}>German</Text>
-      </ThemedButton>
+      <Picker
+        style={{ height: 100, width: 100 }}
+        onValueChange={(itemValue, _) => setLanguage(itemValue)}
+      >
+        {langList.map((e, i) => {
+          return <Picker.Item key={i} label={e} value={e} />;
+        })}
+      </Picker>
       <Spacer />
       {(error && <Text style={styles.error}>{error}</Text>) || <Spacer />}
     </ThemedView>
