@@ -1,11 +1,24 @@
 import { Text, useColorScheme } from "react-native";
 import { Colors } from "../constants/Colors";
+import { useLanguage } from "../hooks/useLanguage";
+import { Language } from "../constants/Language";
 
-const ThemedText = ({ style, title = false, ...props }) => {
-  const colorSheme = useColorScheme();
-  const theme = Colors[colorSheme] ?? Colors.light;
+const ThemedText = ({ style, title = false, children, ...props }) => {
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme] ?? Colors.light;
   const textColor = title ? theme.title : theme.text;
-  return <Text style={[{ color: textColor }, style]} {...props} />;
+  const { userLang } = useLanguage();
+  const isStringKey = typeof children === "string";
+
+  const text = isStringKey
+    ? Language[userLang][children] ?? Language.en[children] ?? children
+    : children;
+
+  return (
+    <Text style={[style, { color: textColor }]} {...props}>
+      {text}
+    </Text>
+  );
 };
 
 export default ThemedText;
